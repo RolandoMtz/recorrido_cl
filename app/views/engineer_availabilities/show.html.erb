@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @engineer_availability.nombre %>
+</p>
+
+<p>
+  <strong>Disponibilidad:</strong>
+  <%= @engineer_availability.disponibilidad %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @engineer_availability.color %>
+</p>
+
+<%= link_to 'Edit', edit_engineer_availability_path(@engineer_availability) %> |
+<%= link_to 'Back', engineer_availabilities_path %>

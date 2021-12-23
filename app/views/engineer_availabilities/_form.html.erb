@@ -1,0 +1,56 @@
+<%= form_with(model: engineer_availability) do |form| %>
+  <% if engineer_availability.errors.any? %>
+    <div id="error_explanation"class="bg-danger bg-gradient text-white">
+      <h2>Se han encontrado los siguientes errores que impiden guardar la información:</h2>
+
+      <ul>
+        <% engineer_availability.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row mb-3">
+    <div class="col-1">
+      <%= form.label :nombre %>
+    </div>
+    <div class="col-2">    
+      <%= form.text_field :nombre, class: "form-control" %>
+    </div>  
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-1">
+      <%= form.label :disponibilidad %>
+    </div>
+    <div class="col-1">      
+      <%= form.number_field :disponibilidad, class: "form-control" %>
+    </div>  
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-1">
+      <%= form.label :color %>
+    </div>
+    <div class="col-3">        
+      <%= form.select :color, options_for_select([["Azul", {class: "bg-primary"}],["Gris", {class: "bg-secondary"}],["Verde", {class: "bg-success"}],["Amarrillo", {class: "bg-warning"}],["Azul cielo", {class: "bg-info"}]]), {prompt: "Seleccione un color"}, {:class => "form-control"} %>
+    </div>  
+  </div>
+
+  <br>
+  <div class="row mb-3">
+    <div class="col-lg-5 col-1">
+    </div>
+    <div class="col-lg-1 col-sm-3">
+      <%= form.submit "Guardar", class: "btn btn-success" %>
+    </div> 
+    <div class="col-lg-1 col-sm-3">
+      <%= link_to 'Regresar', engineer_availabilities_path, class: "btn btn-danger" %>
+    </div> 
+    <div class="col-lg-5">
+    </div>  
+  </div>
+<% end %>
+
+

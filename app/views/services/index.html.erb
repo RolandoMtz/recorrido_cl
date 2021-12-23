@@ -1,0 +1,41 @@
+<br>
+<div class="container">
+  <div class="card card-custom gutter-b border-light">
+    <div class="card-header bg-transparent">
+      <div class="card-title">
+        <div class="row">
+          <div class="col-11">
+            <h3 class="card-label">Catálogo de Servicios</h3>
+          </div>
+          <div class="col-1">
+            <%= link_to  "Nuevo", new_service_path, class: "btn btn-primary" %>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="card-body bg-light bg-gradient shadow">
+    <br>
+    <table class="table table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @services.each do |service| %>
+          <tr>
+            <td><%= service.codigo %></td>
+            <td><%= service.nombre %></td>
+            <td><%= link_to 'Modificar', edit_service_path(service) %></td>
+            <td><%= link_to 'Eliminar', service, method: :delete, data: { confirm: '¿Realmente deseas eliminar el registro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>  
+<br>

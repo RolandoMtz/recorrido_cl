@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @contract.service_id %>
+</p>
+
+<p>
+  <strong>Dia:</strong>
+  <%= @contract.dia %>
+</p>
+
+<p>
+  <strong>Hora inicio:</strong>
+  <%= @contract.hora_inicio %>
+</p>
+
+<%= link_to 'Edit', edit_contract_path(@contract) %> |
+<%= link_to 'Back', contracts_path %>

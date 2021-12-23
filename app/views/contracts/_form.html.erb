@@ -1,0 +1,54 @@
+<%= form_with(model: contract) do |form| %>
+  <% if contract.errors.any? %>
+    <div id="error_explanation" class="bg-danger bg-gradient text-white">
+      <h2>Se han encontrado los siguientes errores que impiden guardar la información:</h2>
+
+      <ul>
+        <% contract.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row mb-3">
+    <div class="col-1">
+      <%= form.label :service_id %>
+    </div>
+    <div class="col-2">  
+      <%= form.collection_select(:service_id, Service.order(:nombre), :id, :nombre, {prompt: "Seleccione el servicio"}, {class: "form-control"}) %>
+    </div>  
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-1">
+      <%= form.label :dia %>
+    </div>
+    <div class="col-2">   
+      <%= form.select(:dia, [["Domingo", 0], ["Lunes", 1], ["Martes", 2], ["Miercoles", 3], ["Jueves", 4], ["Viernes", 5], ["Sabado", 6]], {prompt: "Seleccione el dia"}, {class: "form-control"}) %> 
+    </div>  
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-1">
+      <%= form.label :hora_inicio %>
+    </div>
+    <div class="col-2">   
+      <%= form.time_field :hora_inicio, class: "form-control" %>
+    </div>  
+  </div>
+
+  <br>
+  <div class="row mb-3">
+    <div class="col-lg-5 col-1">
+    </div>
+    <div class="col-lg-1 col-sm-3">
+      <%= form.submit "Guardar", class: "btn btn-success" %>
+    </div> 
+    <div class="col-lg-1 col-sm-3">
+      <%= link_to 'Regresar', contracts_path, class: "btn btn-danger" %>
+    </div> 
+    <div class="col-lg-5">
+    </div>  
+  </div>
+<% end %>

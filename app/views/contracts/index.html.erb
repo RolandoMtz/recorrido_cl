@@ -1,0 +1,57 @@
+<br>
+<div class="container">
+  <div class="card card-custom gutter-b border-light">
+    <div class="card-header bg-transparent">
+      <div class="card-title">
+        <div class="row">
+          <div class="col-11">
+            <h3 class="card-label">Catálogo de Contratos</h3>
+          </div>
+          <div class="col-1">
+            <%= link_to  "Nuevo", new_contract_path, class: "btn btn-primary" %>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+  <div class="card-body bg-light bg-gradient shadow">
+    <br>
+    <table class="table table-striped">
+      <thead class="table-primary">
+        <tr>
+          <th>Service</th>
+          <th>Dia</th>
+          <th>Hora inicio</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @contracts.each do |contract| %>
+          <tr>
+            <td><%= contract.service.nombre %></td>
+            <% case contract.dia %>
+               <% when 0 %>
+                <td>Domingo</td>
+               <% when 1 %>
+                <td>Lunes</td>
+               <% when 2 %>
+                <td>Martes</td>
+               <% when 3 %>
+                <td>Miercoles</td>
+               <% when 4 %>
+                <td>Jueves</td>
+               <% when 5 %>
+                <td>Viernes</td>
+               <% when 6 %>
+                <td>Sabado</td>
+            <% end %>
+            <td><%= contract.hora_inicio.strftime("%H:%M") %></td>
+            <td><%= link_to 'Modificar', edit_contract_path(contract) %></td>
+            <td><%= link_to 'Eliminar', contract, method: :delete, data: { confirm: '¿Confirma que desea eliminar el registro?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>    
