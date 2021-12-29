@@ -1,0 +1,3 @@
+class AvailabilityDetailsController < ApplicationController
+  
+end

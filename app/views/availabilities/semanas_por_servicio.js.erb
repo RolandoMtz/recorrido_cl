@@ -1,0 +1,6 @@
+$("#availability_id").empty();
+$('<option>').val('').text('Seleccione la semana - año').appendTo('#availability_id');
+<% @disponibilidad.each do |data| %>
+    $('<option>').val('<%= data.id %>').text('<%= data.semana %> - <%= data.anio %>').appendTo('#availability_id');
+<% end %>
+$('#availability_id').trigger("chosen:updated");

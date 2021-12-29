@@ -16,6 +16,47 @@
   </div>
   <div class="card-body bg-light bg-gradient shadow">
     <br>
+    <%= form_for("", url: "/ver_disponibilidad", method: :post, remote: true)  do |form| %>
+      <div class="row mb-3">
+        <div class="col-1">
+          <%= form.label "Servicio" %>
+        </div>
+        <div class="col-3">  
+          <%= form.collection_select(:service_id, Service.order(:nombre), :id, :nombre, {prompt: "Seleccione el servicio"}, {class: "form-control"}) %>
+        </div>
+        <div class="col-1">  
+        </div>  
+        <div class="col-1">
+          <%= form.label "Semana" %>
+        </div>
+        <div class="col-3">  
+          <select name="availability_id" id="availability_id" class="form-control">
+              <option value="">Seleccione la semana - año</option>
+          </select>
+        </div>  
+        <div class="col-1">  
+        </div>
+        <div class="col-1">
+          <%= form.submit "Mostrar", class: "btn btn-success" %>  
+        </div>
+      </div>
+    <% end %>  
+    <br>
+    <div id="tabla_disponibilidad">
+      <%= render 'tabla_disponibilidad' %>
+    </div>
   </div>
-</div>    
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#service_id").change(function(){
+            var id = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "<%= semanas_por_servicio_path %>",
+                data: {servicio: id, authenticity_token: $('meta[name=csrf-token]').attr('content')}
+            })
+        })
+    })
+</script>
 

@@ -5,7 +5,7 @@ class CreateAvailabilityDetails < ActiveRecord::Migration[6.1]
       t.date :fecha
       t.time :hora_inicio
       t.references :engineer_availability, null: false, foreign_key: true
-      t.boolean :disponible
+      t.boolean :disponible, default: 0
 
       t.timestamps
     end

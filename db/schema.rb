@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_12_23_170025) do
     t.date "fecha"
     t.time "hora_inicio"
     t.integer "engineer_availability_id", null: false
-    t.boolean "disponible"
+    t.boolean "disponible", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["availability_id"], name: "index_availability_details_on_availability_id"
