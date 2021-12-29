@@ -36,9 +36,17 @@
                 <% end %>  
                 <td class="<%= color %>"><%= hd.engineer_availability.nombre %></td>
                 <% if hd.disponible %>
-                  <td><input type="checkbox" name="chkA[]" value="<%= hd.id %>" checked="true" disabled="true"/></td>
+                  <% if @modifica %>
+                    <td class="text-center <%= color %>"><input type="checkbox" name="chkA[]" value="<%= hd.id %>" checked="true"/></td>
+                  <% else %>
+                    <td class="text-center <%= color %>"><input type="checkbox" name="chkA[]" value="<%= hd.id %>" checked="true" disabled/></td>
+                  <% end %>  
                 <% else %>
-                  <td class="text-center"><input type="checkbox" name="chkA[]" value="<%= hd.id %>" disabled="true"/></td>
+                  <% if @modifica %>
+                    <td class="text-center <%= color %>"><input type="checkbox" name="chkA[]" value="<%= hd.id %>"/></td>
+                  <% else %>
+                    <td class="text-center <%= color %>"><input type="checkbox" name="chkA[]" value="<%= hd.id %>" disabled/></td>
+                  <% end %>
                 <% end %>  
               </tr>  
             <% end %>

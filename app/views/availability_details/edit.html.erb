@@ -1,0 +1,43 @@
+<br>
+<div class="container">
+  <%= form_for("", url: "/actualiza_disponibilidad", method: :post)  do |form| %>
+    <div class="card card-custom gutter-b border-light">
+      <div class="card-header bg-transparent">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-10">
+              <h3 class="card-label">Editar Disponibilidad</h3>
+            </div>
+            <div class="col-1">
+              <%= form.submit "Actualizar Disponibilidad", class: "btn btn-primary" %>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div class="card-body bg-light bg-gradient shadow">
+      <br>
+        <div class="row mb-3">
+          <div class="col-1">
+            <%= form.label "Servicio" %>
+          </div>
+          <div class="col-3">  
+            <%= @disponibilidad.service.nombre %>
+          </div>
+          <div class="col-1">  
+          </div>  
+          <div class="col-1">
+            <%= form.label "Semana" %>
+          </div>
+          <div class="col-3">  
+            <%= @disponibilidad.semana %> - <%= @disponibilidad.anio %> 
+          </div>  
+        </div>
+      <br>
+      <div id="tabla_disponibilidad">
+        <%= render 'availabilities/tabla_disponibilidad'%>
+      </div>
+    </div>
+  <% end %>  
+</div>
+
