@@ -1,0 +1,11 @@
+Pasos para levantar la aplicacion:
+
+1. Ir a la carpeta donde se bajo el proyecto
+2. Ejecutar el comando bundle install
+3. Correr el comando yarn add boostrap
+4. Correr el comando yarn add @popperjs/core
+5. Correr el comando yarn add jquery
+6. Correr el comando yarn add jquery-ui
+7. Correr las migraciones con el comando rails db:migrate
+8. Correr las semillas con el comando rails db:seed
+9. Listo :)

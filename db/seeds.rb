@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #Domingo
+Service.create(codigo: "001", nombre: "Monitoreo Recorrido.cl")
+EngineerAvailability.create(nombre: "Ernesto", disponibilidad: 15, color: "Azul")
+EngineerAvailability.create(nombre: "Barbara", disponibilidad: 19, color: "Amarillo")
+EngineerAvailability.create(nombre: "Benjamin", disponibilidad: 16, color: "Verde")
 Contract.create(service_id: 1, dia: 0, hora_inicio: "2000-01-01 10:00:00")
 Contract.create(service_id: 1, dia: 0, hora_inicio: "2000-01-01 11:00:00")
 Contract.create(service_id: 1, dia: 0, hora_inicio: "2000-01-01 12:00:00")
