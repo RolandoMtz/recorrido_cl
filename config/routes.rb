@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/availabilities', to: "availabilities#index"
   post 'semanas_por_servicio', to: "availabilities#semanas_por_servicio", as: "semanas_por_servicio"
   post 'ver_disponibilidad', to: "availabilities#obten_disponibilidad"
+  post 'editar_disponibilidad', to: "availability_details#edit", as: "editar_disponibilidad"
   resources :contracts
   resources :engineer_availabilities
   root to: 'home#index'

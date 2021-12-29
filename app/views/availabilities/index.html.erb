@@ -1,51 +1,51 @@
 <br>
 <div class="container">
-  <div class="card card-custom gutter-b border-light">
-    <div class="card-header bg-transparent">
-      <div class="card-title">
-        <div class="row">
-          <div class="col-11">
-            <h3 class="card-label">Disponibilidad</h3>
+  <%= form_for("", url: "/ver_disponibilidad", method: :post, remote: true)  do |form| %>
+    <div class="card card-custom gutter-b border-light">
+      <div class="card-header bg-transparent">
+        <div class="card-title">
+          <div class="row">
+            <div class="col-11">
+              <h3 class="card-label">Disponibilidad</h3>
+            </div>
+            <div class="col-1">
+              <%= form.submit "Modificar", class: "btn btn-primary", formaction: editar_disponibilidad_path %>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div class="card-body bg-light bg-gradient shadow">
+      <br>
+        <div class="row mb-3">
+          <div class="col-1">
+            <%= form.label "Servicio" %>
+          </div>
+          <div class="col-3">  
+            <%= form.collection_select(:service_id, Service.order(:nombre), :id, :nombre, {prompt: "Seleccione el servicio"}, {class: "form-control"}) %>
+          </div>
+          <div class="col-1">  
+          </div>  
+          <div class="col-1">
+            <%= form.label "Semana" %>
+          </div>
+          <div class="col-3">  
+            <select name="availability_id" id="availability_id" class="form-control">
+                <option value="">Seleccione la semana - año</option>
+            </select>
+          </div>  
+          <div class="col-1">  
           </div>
           <div class="col-1">
-            <%= link_to  "Nuevo", new_service_path, class: "btn btn-primary" %>
+            <%= form.submit "Mostrar", class: "btn btn-success" %>  
           </div>
-        </div>  
+        </div>
+      <br>
+      <div id="tabla_disponibilidad">
+        <%= render 'tabla_disponibilidad' %>
       </div>
     </div>
-  </div>
-  <div class="card-body bg-light bg-gradient shadow">
-    <br>
-    <%= form_for("", url: "/ver_disponibilidad", method: :post, remote: true)  do |form| %>
-      <div class="row mb-3">
-        <div class="col-1">
-          <%= form.label "Servicio" %>
-        </div>
-        <div class="col-3">  
-          <%= form.collection_select(:service_id, Service.order(:nombre), :id, :nombre, {prompt: "Seleccione el servicio"}, {class: "form-control"}) %>
-        </div>
-        <div class="col-1">  
-        </div>  
-        <div class="col-1">
-          <%= form.label "Semana" %>
-        </div>
-        <div class="col-3">  
-          <select name="availability_id" id="availability_id" class="form-control">
-              <option value="">Seleccione la semana - año</option>
-          </select>
-        </div>  
-        <div class="col-1">  
-        </div>
-        <div class="col-1">
-          <%= form.submit "Mostrar", class: "btn btn-success" %>  
-        </div>
-      </div>
-    <% end %>  
-    <br>
-    <div id="tabla_disponibilidad">
-      <%= render 'tabla_disponibilidad' %>
-    </div>
-  </div>
+  <% end %>  
 </div>
 <script type="text/javascript">
     $(document).ready(function(){
