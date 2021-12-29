@@ -1,0 +1,53 @@
+<div class="accordion">
+  <% cont = 0 %>
+  <% @dias_disponibles.each do |dd| %>
+    <% cont = cont + 1 %>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-heading<%= cont %>">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse<%= cont %>" aria-expanded="false" aria-controls="panelsStayOpen-collapse<%= cont %>">
+          <%= I18n.l dd.fecha, format: :short %>
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapse<%= cont %>" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading<%= cont %>">
+        <div class="accordion-body">
+          <table class="table table-striped">
+            <% ingenieros = 0 %>
+            <% @horarios = @horarios_disponibles.where(fecha: dd.fecha) %>
+            <% @horarios.each do |hd| %>
+              <%#= byebug %>
+              <% case hd.engineer_availability.color%>
+                <% when "Azul" %>
+                  <% color = "bg-primary"%>
+                <% when "Gris" %>
+                  <% color = "bg-secondary"%>
+                <% when "Verde" %>
+                  <% color = "bg-success"%>
+                <% when "Amarillo" %>
+                  <% color = "bg-warning"%> 
+                <% when "Azul cielo" %>
+                  <% color = "bg-info"%>     
+              <% end %>
+              <tr>
+                <td><%= hd.hora_inicio.strftime("%H:%M") %> - <%= (hd.hora_inicio + 1.hour).strftime("%H:%M") %></td> 
+                <td class="<%= color %>"><%= hd.engineer_availability.nombre %></td>
+                <% if hd.disponible %>
+                  <% if @modifica %>
+                    <td class="text-center <%= color %>"><input type="checkbox" name="chkA[]" value="<%= hd.id %>" checked="true"/></td>
+                  <% else %>
+                    <td class="text-center <%= color %>"><input type="checkbox" name="chkA[]" value="<%= hd.id %>" checked="true" disabled/></td>
+                  <% end %>  
+                <% else %>
+                  <% if @modifica %>
+                    <td class="text-center <%= color %>"><input type="checkbox" name="chkA[]" value="<%= hd.id %>"/></td>
+                  <% else %>
+                    <td class="text-center <%= color %>"><input type="checkbox" name="chkA[]" value="<%= hd.id %>" disabled/></td>
+                  <% end %>
+                <% end %>  
+              </tr>  
+            <% end %>
+          </table>
+        </div>
+      </div>
+    </div> 
+  <% end %>    
+</div>

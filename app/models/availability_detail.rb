@@ -26,9 +26,10 @@ class AvailabilityDetail < ApplicationRecord
   end
 
   def self.detalle_horario(disponibilidad_id)
-    
     @horarios = AvailabilityDetail.where(availability_id: disponibilidad_id).order(hora_inicio: :asc).order(engineer_availability_id: :asc).order(fecha: :asc) 
-    
+  end
 
+  def self.detalle_horario_confirmado(disponibilidad_id, confirmado)
+    @horarios = AvailabilityDetail.where(availability_id: disponibilidad_id, confirmado: true).order(hora_inicio: :asc).order(engineer_availability_id: :asc).order(fecha: :asc) 
   end
 end

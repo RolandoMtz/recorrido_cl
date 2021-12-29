@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_23_170025) do
+ActiveRecord::Schema.define(version: 2021_12_29_094028) do
 
   create_table "availabilities", force: :cascade do |t|
     t.integer "service_id", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_12_23_170025) do
     t.boolean "disponible", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "confirmado", default: false
     t.index ["availability_id"], name: "index_availability_details_on_availability_id"
     t.index ["engineer_availability_id"], name: "index_availability_details_on_engineer_availability_id"
   end

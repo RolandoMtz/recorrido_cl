@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post 'editar_disponibilidad', to: "availability_details#prepara_edicion", as: "prepara_editar_disponibilidad"
   get '/editar_disponibilidad/:id', to: "availability_details#edit", as: "editar_disponibilidad"
   post '/actualiza_disponibilidad', to: "availability_details#update"
+  post 'confirmar_disponibilidad', to: "availabilities#confirmar", as: "confirmar_disponibilidad"
+  get '/horarios', to: "availabilities#horarios", as: "horarios"
+  post '/ver_horario', to: "availabilities#obten_horario"
+
   resources :contracts
   resources :engineer_availabilities
   root to: 'home#index'
